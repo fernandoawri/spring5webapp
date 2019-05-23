@@ -1,13 +1,17 @@
-package fer.springframework.spring5webapp.controllers;
+package com.fernando.spring.firstWebApp.controllers;
 
-import fer.springframework.spring5webapp.repositories.AuthorRepository;
+import com.fernando.spring.firstWebApp.repositories.AuthorRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Created by jt on 5/18/17.
+ */
 @Controller
 public class AuthorController {
-    public AuthorRepository authorRepository;
+
+    private AuthorRepository authorRepository;
 
     public AuthorController(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
@@ -15,7 +19,9 @@ public class AuthorController {
 
     @RequestMapping("/authors")
     public String getAuthors(Model model){
+
         model.addAttribute("authors", authorRepository.findAll());
+
         return "authors";
     }
 }
